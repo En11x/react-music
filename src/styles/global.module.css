@@ -1,0 +1,31 @@
+@value colors: "~styles/colors.module.css";
+@value red from colors;
+
+@value constants: "~styles/constants.module.css";
+@value bodyMinWidth from constants;
+
+html{
+    font-size: 100px;
+}
+body{
+    min-width: bodyMinWidth;
+    overflow: hidden;
+}
+button{
+    outline: none !important;
+}
+img{
+    border-radius: 5px;
+}
+*{
+    box-sizing: border-box;
+}
+
+
+
+
+/* 设置全局样式 */
+:global(.error){
+    margin-top:10px;
+    color:red !important;
+}
