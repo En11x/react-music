@@ -21,10 +21,11 @@
         }
 
         &:hover{
-            background-color: #e3e3e3;
+            background-color: #DDDDE1;
         }
     }
     .active{
-        color: red;
+        background-color: #DDDDE1;
+        border-left:2px solid #BC2F2D;
     }
 }

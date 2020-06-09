@@ -14,12 +14,12 @@ const useClickAway = <E extends Event = Event>(
 ) => {
   const savedCallback = useRef(onClickAway);
   useEffect(() => {
-    console.log(1, onClickAway);
+    // console.log(1, onClickAway);
     savedCallback.current = onClickAway;
   }, [events, ref]); //仅在onClickAway 改变时更新
 
   useEffect(() => {
-    console.log(2, events, ref);
+    // console.log(2, events, ref);
     const handler = (event: any) => {
       const { current: el } = ref;
       el && !el.contains(event.target) && savedCallback.current(event);

@@ -58,7 +58,6 @@ export default function useAsyncFn<Result = any, Args extends any[] = any[]>(
     return fn(...args).then(
         
       (value) => {
-        console.log(fn,value,'00000000')
         const callback = args[args.length - 1];
 
         

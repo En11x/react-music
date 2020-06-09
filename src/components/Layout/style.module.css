@@ -6,14 +6,12 @@
     height: 100vh;
     display: flex;
     overflow: hidden;
-    background-color: red;
 }
 
 .content{
     /* 减去sidebar宽度 */
     width: calc(100% - sidebarWidth);
     height: calc(100% - headerHeight - footerHeight);
-    background-color: blue;
     margin-top: headerHeight;
     margin-bottom: footerHeight;
 }

@@ -28,6 +28,19 @@ const CLOUD:string = '/cloud'
 //我的收藏
 const COLLECTION:string = '/collection'
 
+//MV
+const MV:string = `${VIDEOS}/mv`
+
+//搜索
+const SEARCH:string = '/search'
+
+//歌单详情
+const SONG_LISTS:string = '/songlists'
+const SONG_LIST_DETAIL:string = `${SONG_LISTS}/:songlistId`
+
+//默认路由
+const DEFAULT_ROUTE:string = DISCOVERY
+
 const ROUTES = {
     ROOT,
     DISCOVERY,
@@ -41,7 +54,12 @@ const ROUTES = {
     VIDEO,
     DOWNLOAD,
     CLOUD,
-    COLLECTION
+    COLLECTION,
+    DEFAULT_ROUTE,
+    MV,
+    SEARCH,
+    SONG_LISTS,
+    SONG_LIST_DETAIL
 }
 
 export default ROUTES

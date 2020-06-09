@@ -12,11 +12,11 @@
     color: grey;
 
     &:hover{
-        color: red;
+        color: black;
     }
 }
 .action{
-    color: red;
+    color: black;
 }
 
 .active{

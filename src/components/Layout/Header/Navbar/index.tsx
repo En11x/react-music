@@ -30,6 +30,16 @@ const NANBAR = {
             label:"最新音乐",
             route:ROUTES.LATEST_MUSIC
         }
+    ],
+    [ROUTES.VIDEOS]:[
+        {
+            label:"视频",
+            route:ROUTES.VIDEO
+        },
+        {
+            label:'MV',
+            route:ROUTES.MV
+        }
     ]
 }
 

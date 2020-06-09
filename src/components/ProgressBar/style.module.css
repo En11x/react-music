@@ -1,0 +1,46 @@
+@value colors: "~styles/colors.module.css";
+@value red from colors;
+
+.root{
+    width: 100%;
+    &:hover{
+        .controllDot{
+            display: block;
+        }
+    }
+}
+
+.doneWrap{
+    position: relative;
+
+    .done{
+        width: 100%;
+        height:2px;
+        background-color: red;
+    }
+
+    .controllDot{
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        position: absolute;
+        background-color: red;
+        z-index: 10;
+        display: none;
+        left: 0;
+        top: 0;
+        transform: translate(50%,-50%);
+        
+        .label{
+            padding: 0 5px;
+            position: absolute;
+            top:13px;
+            left: 50%;
+            color:#fff;
+            border-radius:3px;
+            transform:translate(-50%,0);
+            font-size:0.9em;
+            background-color: rgba(0,0,0,0.6);
+        }
+    }
+}

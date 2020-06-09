@@ -25,7 +25,7 @@ const Seacher = () => {
 
     useEffect(()=>{
         // console.log(1111+'搜索',state,searchHotFn,5,searchApis.searchHot,"000000000")
-        console.log(searchHotFn.toString(),'-----')
+        // console.log(searchHotFn.toString(),'-----')
         searchHotFn()
     },[])
 
