@@ -30,6 +30,7 @@
 .result{
     width: 350px;
     height: calc(100% - headerHeight - footerHeight);
+    padding: 18px 0;
     position: fixed;
     right: 0;
     top: headerHeight;
@@ -38,6 +39,7 @@
     border-left: 1px solid borderColor;
     transform: translate(100%,0);
     transition: transform 0.3s ease;
+    overflow-y: auto;
 }
 
 .show{

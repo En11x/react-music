@@ -15,7 +15,7 @@
     background-color: #fff;
     z-index: 10;
     display: flex;
-    /* justify-content: space-between; */
+    justify-content: space-between;
 }
 
 .progressBar{
@@ -89,8 +89,17 @@
 }
 
 .otherOperations{
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
 
     .item{
+        margin-left: 15px;
+        color:#888;
+        cursor: pointer;
         
+        & span:focus{
+            outline: none;
+        }
     }
 }

@@ -49,7 +49,7 @@ export default function useAsyncFn<Result = any, Args extends any[] = any[]>(
 
   const isMounted = useMountedState();
   
-
+  
 
   const callback = useCallback((...args: Args) => {
     const callId = ++lastCallId.current;

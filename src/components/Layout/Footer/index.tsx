@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon } from '@blueprintjs/core'
+import { Icon, Tooltip } from '@blueprintjs/core'
 import cn from 'classnames'
 
 import styles from './style.module.css'
@@ -7,8 +7,9 @@ import styles from './style.module.css'
 import ProgressBar from './ProgressBar'
 import Artists from 'components/Artists'
 import PlayOperations from './PlayOperations'
-
+import PlayMode from './PlayMode'
 import AudioTimer from './AudioTimer'
+import PlayVolume from './PlayVolume'
 
 const Footer = () => {
 
@@ -47,7 +48,15 @@ const Footer = () => {
 
             <div className={styles.otherOperations}>
                 <div className={styles.item}>
-                    
+                    <PlayMode />
+                </div>
+                <div className={styles.item}>
+                    <Tooltip content='打开播放列表'>
+                        <Icon icon='menu-closed' />
+                    </Tooltip>
+                </div>
+                <div className={styles.item}>
+                    <PlayVolume />
                 </div>
             </div>
 

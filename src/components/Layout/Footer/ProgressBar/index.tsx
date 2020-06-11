@@ -4,8 +4,12 @@ import BaseProgressBar from 'components/ProgressBar'
 
 const ProgressBar = () => {
 
+    //点击进度条
+    const handleBarClick = () => {
+
+    }
     return (
-        <BaseProgressBar />
+        <BaseProgressBar onBarClick= {handleBarClick} />
     )
 
 }
