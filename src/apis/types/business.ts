@@ -86,3 +86,15 @@ export interface IMusic {
   status?: number;
   picUrl?: string;
 }
+
+export interface IMyMusic{
+    id:number,
+    name:string,
+    artists:IArtist[],
+    duration:number,
+    picUrl?:string,
+    album?:IAlbum,
+    fee?:number,  //fee =1 vip才能听
+    status?:number, // -200 歌曲不存在
+    [key:string]:any
+}

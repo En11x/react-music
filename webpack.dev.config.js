@@ -14,7 +14,7 @@ export default {
       new webpack.HotModuleReplacementPlugin()
   ],
   devServer:{
-      contentBase:'./dist',  //输出目录
+    //   contentBase:'./dist',  //
       historyApiFallback:true,  //所有404定位到index.html
       hot:true
   }

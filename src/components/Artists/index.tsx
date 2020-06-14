@@ -1,11 +1,28 @@
 import React from 'react'
 import styles from './style.module.css'
+import { IArtist } from 'apis/types/business'
 
-const Artists = () => {
+interface IProps {
+    artists?: IArtist[]
+}
 
+const Artists: React.FC<IProps> = ({ artists }) => {
+    console.log(artists, '..')
     return (
         <div className={styles.root}>
-            <span className={styles.singer}>歌手名字</span>
+            {
+                artists?.map(({ name }, index) =>
+                    index !== artists.length - 1 ? (
+                        <div key={name}>
+                            <span className={styles.singer}>{name}</span>
+                            <span className={styles.slash}> / </span>
+                        </div>
+                    ) : (
+                            <span key={name} className={styles.singer}>{name}</span>
+                        )
+                )
+            }
+
         </div>
     )
 

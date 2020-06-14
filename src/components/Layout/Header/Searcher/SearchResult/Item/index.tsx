@@ -3,6 +3,7 @@ import { IconName, Icon } from '@blueprintjs/core'
 import { IAlbum, IArtist, IMV, IMusic } from 'apis/types/business'
 
 import styles from './style.module.css'
+import { noop } from 'helpers/fn'
 
 type Type = IAlbum | IArtist | IMV | IMusic
 
@@ -14,7 +15,7 @@ interface IItemProps {
     onItemClick?: (item: any) => void
 }
 
-const Item: React.FC<IItemProps> = ({ title, icon, data, renderLabel, onItemClick }) => {
+const Item: React.FC<IItemProps> = ({ title, icon, data, renderLabel, onItemClick=noop }) => {
 
     return (
         <div className={styles.root}>
@@ -25,7 +26,7 @@ const Item: React.FC<IItemProps> = ({ title, icon, data, renderLabel, onItemClic
             <div className={styles.content}>
                 { data.map((item,index)=>{
                     return (
-                        <div className={styles.item} key={index}>
+                        <div onClick={()=>onItemClick(item)} className={styles.item} key={index}>
                             {renderLabel(item)}
                         </div>
                     )

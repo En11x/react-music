@@ -3,6 +3,7 @@
 
 .root{
     width: 100%;
+    cursor: pointer;
     &:hover{
         .controllDot{
             display: block;

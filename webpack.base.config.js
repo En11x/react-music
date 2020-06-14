@@ -6,7 +6,7 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 //js优化压缩
-import TerserPlugin from 'terser-webpack-plugin'
+import TerserPlugin from "terser-webpack-plugin";
 
 console.log("base.config.js");
 
@@ -14,6 +14,7 @@ export default (env, argv) => {
   const config = {
     entry: "./src/index.tsx",
     output: {
+      path: path.resolve(__dirname, "dist"),
       filename:
         argv.mode === "production"
           ? "[name].[chunkhash:8].js"
@@ -86,15 +87,15 @@ export default (env, argv) => {
     ],
 
     //优化
-    optimization:{
-        //允许通过提供一个或多个定制过的terser  plugin实例，覆盖默认压缩工具（minimizer）
-        minimizer:[
-            new TerserPlugin({
-                parallel:true, //启用多进程并行运行
-                cache:true    //启用文件缓存
-            })
-        ]
-    }
+    optimization: {
+      //允许通过提供一个或多个定制过的terser  plugin实例，覆盖默认压缩工具（minimizer）
+      minimizer: [
+        new TerserPlugin({
+          parallel: true, //启用多进程并行运行
+          cache: true, //启用文件缓存
+        }),
+      ],
+    },
   };
   return config;
 };

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { IMusic, IArtist, IAlbum, MUSIC_TYPE, MUSIC_STATUS } from 'apis/types/business'
 import Table, { IColumn } from 'components/Table'
 import { formatTime } from 'helpers/time'
@@ -6,7 +6,9 @@ import cn from 'classnames'
 import styles from './style.module.css'
 import VipIcon from 'components/VipIcon'
 import { Icon } from '@blueprintjs/core'
-
+import albumApis from 'apis/album'
+import { PlayMusicStateContext, PlayMusicDispatchContext, ACTIONS, AudioContext } from 'reducers/playMusic'
+import { createMusic } from 'helpers/business'
 
 interface IProps {
     data: IMusic[],
@@ -15,8 +17,9 @@ interface IProps {
 
 const MusicList: React.FC<IProps> = ({ data, onPlayAll }) => {
 
-   
-
+    const state = useContext(PlayMusicStateContext)
+    const dispatch = useContext(PlayMusicDispatchContext)
+    const audioInfo = useContext(AudioContext)
     //每列怎么展示
     const columns: IColumn<IMusic, keyof IMusic>[] = [
         {
@@ -28,9 +31,9 @@ const MusicList: React.FC<IProps> = ({ data, onPlayAll }) => {
                     <div className={styles.operations}>
                         {
                             // 显示播放或暂停按钮 判断当前音乐是否在播放
-                            false ? (
+                            state.musicId === record.id ? (
                                 <span className={styles.isPlaying}>
-                                    <Icon icon='volume-off' iconSize={14} />
+                                    <Icon icon={ audioInfo.state?.paused?'volume-off':'volume-up' } iconSize={14} />
                                 </span>
                             ) : (
                                     <span className={styles.index}>
@@ -84,11 +87,30 @@ const MusicList: React.FC<IProps> = ({ data, onPlayAll }) => {
     ]
 
     //双击
-    const handleDoubleClick = (music:IMusic)=>{
-        console.log(music,'?????')
+    const handleDoubleClick = async (music: IMusic) => {
+
+        let { picUrl } = music
+        if (!picUrl) {
+            const result = await albumApis.getAlbum(music.album.id)
+            picUrl = result.album.blurPicUrl
+        }
+
+        //播放音乐
+        dispatch({
+            type: ACTIONS.PLAY,
+            payload: {
+                musicId: music.id,
+                music: createMusic({
+                    ...music,
+                    picUrl,
+                    duration: music.duration / 1000
+                })
+            }
+        })
+
     }
 
-    const checkRowIsDisabled = (music:IMusic) => music.status === MUSIC_STATUS.NOT_FOUND
+    const checkRowIsDisabled = (music: IMusic) => music.status === MUSIC_STATUS.NOT_FOUND
 
     return (
         <div>

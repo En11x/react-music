@@ -30,6 +30,7 @@ const useClickAway = <E extends Event = Event>(
     }
     return () => {
       //组件销毁时执行
+      console.log('销毁')
       for (const eventName of events) {
         off(document, eventName, () => handler);
       }

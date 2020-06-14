@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { ISearchSuggestResponse } from 'apis/types/search'
 import { IMusic, IAlbum, IArtist, IMV } from 'apis/types/business'
 import Item from './Item'
 import styles from './style.module.css'
+import albumApis from 'apis/album'
+import { PlayMusicDispatchContext, ACTIONS } from 'reducers/playMusic'
+import { createMusic } from 'helpers/business'
 
 interface IProps {
     data: ISearchSuggestResponse
@@ -11,7 +14,7 @@ interface IProps {
 
 const SearchResult: React.FC<IProps> = ({ data }) => {
     const { order } = data
-
+    const dispatch = useContext(PlayMusicDispatchContext)
     const config: {
         [key: string]: any
     } = {
@@ -19,7 +22,31 @@ const SearchResult: React.FC<IProps> = ({ data }) => {
             title: '单曲',
             icon: "music",
             renderLabel: (item: IMusic) => `${item.name} - ${item.artists.map(({ name }) => name).join('/')}`,
-            // onItemClick:
+            onItemClick: async (item:IMusic)=>{
+                // 点击单曲直接播放
+                console.log('点击',item,)
+                let { picUrl } = item
+
+                if(!picUrl){
+                    //没有封面，获取专辑封面
+                    const result = await albumApis.getAlbum(item.album.id)
+                    picUrl = result.album.blurPicUrl
+                }
+
+                dispatch({
+                    type:ACTIONS.PLAY,
+                    payload:{
+                        musicId:item.id,
+                        music:createMusic({
+                            ...item,
+                            picUrl,
+                            duration:item.duration / 1000
+                        })
+                    }
+                })
+
+                
+            }
         },
         albums: {
             title: '专辑',
