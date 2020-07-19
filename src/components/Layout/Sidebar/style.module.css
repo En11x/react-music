@@ -10,6 +10,7 @@
 
 .content{
     height: 100%;
+    overflow-y: auto;
 }
 
 .user{
@@ -41,4 +42,8 @@
         color:rgb(69,69,69);
         cursor: default;
     }
+}
+
+.block{
+    margin-bottom: 20px;
 }

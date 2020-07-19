@@ -1,0 +1,7 @@
+@value colors: "~styles/colors.module.css";
+@value tipsHoverColor, black from colors;
+
+.root{
+    width: 100%;
+    height: 100%;
+}

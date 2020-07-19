@@ -98,3 +98,57 @@ export interface IMyMusic{
     status?:number, // -200 歌曲不存在
     [key:string]:any
 }
+
+export interface ISonglist{
+    adType:number,
+    backgroundCoverId:number,
+    cloudTrackCount:number,
+    commentCount:number,
+    coverImgUrl:string,
+    picUrl?:string,
+    createTime:number,
+    copywriter?:string,
+    creator:{
+        avatarUrl:string,
+        nickname:string,
+        userId:number
+    },
+    description:string,
+    highQuality:boolean,
+    id:number,
+    name:string,
+    newImported:boolean,
+    opRecommend:boolean,
+    ordered:boolean,
+    playCount:number,
+    privacy:number,
+    shareCount:number,
+    specialType:number,
+    status:number,
+    subscribed:boolean,
+    subscribers:[],
+    subscribedCount:number,
+    tags:string[],
+    trackCount:number,
+    trackIds:[],
+    trackNumberUpdateTime:number,
+    trackUpdateTime:number,
+    tracks:ISimpleMusic[],
+    updateTime:number,
+    userId:number
+}
+
+export interface ISimpleMusic{
+    al:{
+        id:number,
+        name:string,
+        picUrl:string
+    },
+    ar:IArtist[],
+    dt:number,
+    id:number,
+    name:string,
+    publishTime:number,
+    fee?:number,
+    status?:number
+}

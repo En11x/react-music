@@ -68,20 +68,39 @@ const playMusicReducer = (state: IState, { type, payload }: IAction) => {
         music: payload?.music,
       };
     }
-    case ACTIONS.SET_PLAY_LIST:{
-        const playList = payload?.playList || []
-        playHistoryLocalStorage.setItem(playList)
-        return state
+    case ACTIONS.SET_PLAY_LIST: {
+      const playList = payload?.playList || [];
+      playHistoryLocalStorage.setItem(playList);
+      return state;
+    }
+    case ACTIONS.SET_PLAY_MODE: {
+      playModeLocalStorage.setItem(payload?.playMode);
+      return {
+        ...state,
+        playMode: payload?.playMode || MODE.PLAY_IN_ORDER,
+      };
     }
     //清除播放列表
-    case ACTIONS.CLEAR_PLAY_LIST:{
-        playListLocalStorage.removeItem()
-        return state
+    case ACTIONS.CLEAR_PLAY_LIST: {
+      playListLocalStorage.removeItem();
+      return state;
     }
     //清除历史记录
-    case ACTIONS.CLEAR_PLAY_HISTORY:{
-        playHistoryLocalStorage.removeItem()
-        return state
+    case ACTIONS.CLEAR_PLAY_HISTORY: {
+      playHistoryLocalStorage.removeItem();
+      return state;
+    }
+    case ACTIONS.SHOW_LYRIC: {
+      return {
+        ...state,
+        showLyric: true,
+      };
+    }
+    case ACTIONS.HIDE_LYRIC: {
+      return {
+        ...state,
+        showLyric: false,
+      };
     }
   }
   console.log("kkkkk");

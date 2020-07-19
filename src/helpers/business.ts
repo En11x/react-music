@@ -1,4 +1,4 @@
-import { IMyMusic } from "apis/types/business"
+import { IMyMusic, ISimpleMusic } from "apis/types/business"
 
 
 //获取音乐url
@@ -16,5 +16,21 @@ export const createMusic = ({id,name,artists,duration,picUrl,...others}:IMyMusic
         duration,
         picUrl,
         ...others
+    }
+}
+
+
+// 从简单音乐模型中创建我们需要的音乐对象
+export const createMusicFromSimpleMusic = (music:ISimpleMusic):IMyMusic=>{
+    const { id,name,al,ar,dt,fee,status } = music
+    return {
+        id,
+        name,
+        fee,
+        status,
+        picUrl:al.picUrl,
+        artists:ar,
+        duration:dt,
+        album:al
     }
 }

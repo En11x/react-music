@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useCallback, useState } from 'react'
+import React, { useMemo, useRef, useCallback, useState, useEffect } from 'react'
 import styles from './style.module.css'
 import cn from 'classnames'
 
@@ -44,11 +44,15 @@ const ProgressBar: React.FC<IProps> = ({
         return `${isNumber(originDonePercent) ? originDonePercent : donePercent * 100}%`
     }, [donePercent, originDonePercent])
 
+
     return (
         <div className={cn(styles.root, className)} ref={(ref) => barRef.current = ref} onClick={handleBarClick}>
             <div className={styles.doneWrap} style={{ width }}>
                 <div className={styles.done}></div>
-                <div className={styles.controllDot} draggable={true}>
+                <div 
+                    className={styles.controllDot} 
+                    draggable={true}
+                >
                     <div className={styles.label}>
                         {renderLabel ? renderLabel() : width}
                     </div>

@@ -1,0 +1,55 @@
+@value colors: "~styles/colors.module.css";
+@value tipsColor,red from colors;
+
+.root{
+    position: relative;
+    padding-top: 22%;
+    margin-bottom: 20px;
+}
+
+.banners{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.dots{
+    
+    display: flex;
+    position: absolute;
+    bottom:10px;
+    left:50%;
+    transform:translate(-50%,0);
+
+    .dot{
+        width: 7px;
+        height:7px;
+        border-radius:50%;
+        margin-right:10px;
+        background-color: tipsColor;
+    }
+    .active{
+        background-color: red;
+    }
+}
+
+.middle{
+    transform: translate(-50%,0) scale(1) !important;
+    z-index: 2;
+}
+
+.left{
+    transform: translate(-110%,0) scale(0.8) !important;
+}
+.right{
+    transform: translate(10%,0) scale(0.8) !important;
+}
+
+.hidden{
+    transform: translate(-50%,0) scale(1);
+    visibility: hidden;
+}
+.enabled{
+    cursor: pointer;
+}

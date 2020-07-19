@@ -59,7 +59,7 @@ const List: React.FC<IProps> = ({ data, onClear, onDoubleClick }) => {
         {
             key: 'duration',
             width: '15%',
-            render: (duration: number) => formatTime(duration)
+            render: (duration: number) => formatTime(duration /1000)
         }
     ]
 

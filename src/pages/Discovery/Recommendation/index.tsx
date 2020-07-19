@@ -1,8 +1,17 @@
 import React from 'react'
+import styles from './style.module.css'
+import Banner from './Banner'
+import Songlist from './Songlist'
 
 const Recommendation = ()=>{
     return (
-        <div>个性推荐</div>
+        <div className={styles.root}>
+            <Banner />
+            
+            <div className={styles.block}>
+                <Songlist />
+            </div>
+        </div>
     )
 }
 

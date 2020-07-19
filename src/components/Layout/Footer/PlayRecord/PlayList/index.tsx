@@ -13,7 +13,6 @@ const PlayList = () => {
     const playList =  playListLocalStorage.getItem()
 
     const handleDoubleClick = (item:IMyMusic)=>{
-        console.log(item,'店家。。。')
         dispatch({
             type:ACTIONS.PLAY,
             payload:{
